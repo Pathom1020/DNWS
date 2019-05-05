@@ -206,6 +206,25 @@ namespace DNWS
             }
         }
 
+        public static void RemoveUser(string user)
+        {
+            if (user == null)
+            {
+                throw new Exception("User is not set");
+            }
+
+            using (var context = new TweetContext())
+            {
+                List<User> userlist = context.Users.Where(b => b.Name.Equals(user)).ToList();
+                if (userlist.Count <= 0)
+                {
+                    throw new Exception("User not found");
+                }
+                context.Users.Remove(userlist[0]);
+                context.SaveChanges();
+            }
+        }
+
     }
     public class TwitterPlugin : IPlugin
     {
@@ -273,7 +292,7 @@ namespace DNWS
         }
 
 
-        public HTTPResponse GetResponse(HTTPRequest request)
+        public virtual HTTPResponse GetResponse(HTTPRequest request)
         {
             HTTPResponse response = new HTTPResponse(200);
             StringBuilder sb = new StringBuilder();

@@ -24,11 +24,17 @@
             "Preprocessing" : "false",
             "Postprocessing" :"false" 
         },
-        {
-            "Path" : "twitter",
-            "Class" : "DNWS.TwitterPlugin",
-            "Preprocessing" : "false",
-            "Postprocessing" :"false" 
-        }
+      {
+        "Path": "twitter",
+        "Class": "DNWS.TwitterPlugin",
+        "Preprocessing": "false",
+        "Postprocessing": "false"
+      },
+      {
+        "Path": "name",
+        "Class": "DNWS.TwitterApiPlugin",
+        "Preprocessing": "false",
+        "Postprocessing": "false"
+      }
     ]
 }
